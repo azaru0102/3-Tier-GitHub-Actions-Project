@@ -22,12 +22,12 @@ jobs:
       - name: frontend compilation (syntext)
         run: |
           cd client
-          find . -name "*.js" --exec node --check {} +
+          find . -name "*.js" -exec node --check {} +
 
       - name: Backend compilation (syntext check)
         run: |
           cd api
-          find . --name "*.js" --exec node --check {} +
+          find . --name "*.js" -exec node --check {} +
 
       
 
