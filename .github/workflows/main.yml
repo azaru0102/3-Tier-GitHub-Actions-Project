@@ -21,7 +21,7 @@ jobs:
 
       - name: frontend compilation (syntext)
         run: |
-          cd clint
+          cd client
           find . -name "*.js" --exec node --check {} +
 
       - name: Backend compilation (syntext check)
