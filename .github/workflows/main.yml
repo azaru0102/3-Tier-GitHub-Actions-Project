@@ -1,0 +1,38 @@
+name: cicd pipeline
+
+on: 
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  compile:
+    runs_on: agent-1
+  
+    steps:
+      - name: checkout the code
+        uses: actions/checkout@v1
+
+      - name: setup node js
+        uses: actions/setup-node@v5
+        with: 
+          version: '23'
+
+      - name: frontend compilation (syntext)
+        run: |
+          cd clint
+          find . -name "*.js" --exec node --check {} +
+
+      - name: Backend compilation (syntext check)
+        run: |
+          cd api
+          find . --name "*.js" --exec node --check {} +
+
+      
+
+
+          
+          
+          
+        
