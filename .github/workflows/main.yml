@@ -8,7 +8,7 @@ on:
 
 jobs:
   compile:
-    runs_on: agent-1
+    runs-on: agent-1
   
     steps:
       - name: checkout the code
