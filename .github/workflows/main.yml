@@ -14,21 +14,20 @@ jobs:
       - name: checkout the code
         uses: actions/checkout@v1
 
-      - name: setup node js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
-        with: 
-          version: '23'
+        with:
+          node-version: '23'   # adjust version as per your Jenkins setup
 
-      - name: frontend compilation (syntext)
+      - name: Frontend Compilation (Syntax Check)
         run: |
           cd client
           find . -name "*.js" -exec node --check {} +
-  
 
-      - name: Backend compilation (syntext check)
+      - name: Backend Compilation (Syntax Check)
         run: |
           cd api
-          find . --name "*.js" -exec node --check {} +
+          find . -name "*.js" -exec node --check {} +
 
       
 
