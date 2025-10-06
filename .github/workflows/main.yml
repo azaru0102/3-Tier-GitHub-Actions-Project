@@ -1,33 +1,36 @@
 name: cicd pipeline
 
 on: 
-  push:
-    branches: ["main"]
+  push: 
+    branches: [ main ]
   pull_request:
-    branches: ["main"]
+    branches: [ main ]
 
 jobs:
-  compile:
-    runs-on: agent-1
-  
+  checkout:
+    runs-on: agen-1
     steps:
-      - name: checkout the code
-        uses: actions/checkout@v1
-
-      - name: Set up Node.js
+      - name: Checkout
+        uses: actions/checkout@v5
+        
+      - name: setup-NodeJs
         uses: actions/setup-node@v4
-        with:
-          node-version: '23'   # adjust version as per your Jenkins setup
+        with: 
+           node-version: '23'
 
-      - name: Frontend Compilation (Syntax Check)
+      - name: frontend syntax check 
         run: |
-          cd client
-          find . -name "*.js" -exec node --check {} +
+         cd client
+         find . -name "*.js" -exec node --check {} +
 
-      - name: Backend Compilation (Syntax Check)
+      - name: backend syntax check 
         run: |
-          cd api
-          find . -name "*.js" -exec node --check {} +
+         cd api
+         find . -name "*.js" -exec node --check {} + 
+
+  
+
+    
 
       
 
